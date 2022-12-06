@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .myHeading {
+          color: red;
+        }
+      </style>
+</head>
+<body>
+    <div >
+        <h1 onclick = "makeItClickable(event)">This is the title of the page</h1>
+        <button onclick="changeTitle('Hello')">Change Title</button>
+        <button onclick="addClassToTitle()">Change Color</button>
+        <button onclick="changePcontent()">change content</button>
+        <button onclick="changeUrls()">Change Link</button>
+        <button onclick="addToTheSecond('4th')">Add new elements</button>
+        <button onclick="addParagraph('Hello,I am second paragraph')">Add Paragraphs </button>
+        <button onclick="firstUlDisappear()">UL Hidden</button>
+        <button onclick = "paintItGreen()">Change color</button>
+        <h2>This is the subtitle of the page</h2>
+      </div>
+  
+      <div>
+        <hr />
+  
+        <ul id="firstList">
+          <li>1st</li>
+          <li>2nd</li>
+          <li>3rd</li>
+        </ul>
+  
+        <ul id="secondList">
+          <li>1st</li>
+          <li>2nd</li>
+          <li>3rd</li>
+        </ul>
+  
+        <a href="strive.school">This link goes to Strive School</a>
+  
+        <div id="add-p">
+          <p>This text is just for the exercise</p>
+        </div>
+  
+        <div>
+          <input
+            type="text"
+            id="input-field"
+            placeholder="input field for the exercise"
+            onkeyup="handleKeyUp(event)"
+          />
+        </div>
+      </div>
+  
+      <div>
+        <p>And this text is just for the exercise too!</p>
+        <h2 style="color: red" onclick="changeFooterText(event)">
+          Save this page on your computer and open it with VSCode to get the
+          questions!
+        </h2>
+      </div>
+      <script>
+        /* EXERCISE 1
+         Write a function for changing the title of the document in something else.
+        */
+  
+        const changeTitle = function (newTitle) {
+          let h1Node  = document.getElementsByTagName("h1")[0];
+          h1Node.innerText = newTitle;
+        };
+  
+        /* EXERCISE 2
+         Write a function for changing the class of the title of the page in "myHeading".
+        */
+  
+        const addClassToTitle = function () {
+          let className = document.getElementsByTagName('h1')[0]
+          className.classList.add('myHeading')
+        };
+  
+        /* EXERCISE 3
+         Write a function for changing the text of only the p which are children of a div.
+        */
+  
+        const changePcontent = function () {
+          let changeContent = document.querySelectorAll('div p')
+          for(let i = 0; i < changeContent.length; i++){
+            changeContent[i].innerText = "change paragraph content"
+          }
+        };
+  
+        /* EXERCISE 4
+         Write a function for changing the href property of every link to https://www.google.com
+        */
+  
+        const changeUrls = function () {
+          let changeLink = document.getElementsByTagName('a')[0]
+          changeLink.innerText = "https://www.google.com"
+        };
+  
+        /* EXERCISE 5
+         Write a function for adding a new list item in the second unordered list.
+        */
+  
+        const addToTheSecond = function (content) {
+          let newListItem = document.getElementById('secondList')
+          let li = document.createElement("li");
+          li.appendChild(document.createTextNode(content))
+          newListItem.appendChild(li)
+        };
+  
+        /* EXERCISE 6
+         Write a function for adding a second paragraph to the first div.
+        */
+  
+        const addParagraph = function (content) {
+          let addParagraph2 = document.getElementById('add-p')
+          addParagraph2.innerHTML += content
+        };
+  
+        /* EXERCISE 7
+         Write a function for making the first unordered list disappear.
+        */
+  
+        const firstUlDisappear = function () {
+          let ulHidden = document.getElementById("firstList")
+          ulHidden.hidden = true
+        };
+  
+        /* EXERCISE 8
+         Write a function for making the background of every unordered list green.
+        */
+  
+        const paintItGreen = function () {
+            
+         let changeBGColor = document.getElementsByTagName('ul')
+         for (let i = 0; i < changeBGColor.length; i++){ 
+          changeBGColor[i].style.backgroundColor = 'green' 
+            }
+        };
+  
+        /* EXERCISE 9
+         Make the heading of the page change color every time the user clicks on it.
+        */
+  
+        const makeItClickable = function () {
+          let color = ["red", "green", "yellow", "orange", "violet", "olive", "blue"]
+          document.getElementsByTagName("h1")[0].addEventListener("click", makeItClickable); {
+          let randomColor = color[Math.floor(Math.random() * color.length)];
+          let title = document.getElementsByTagName("h1")[0];
+           title.style.color = randomColor;
+        }
+    }
+  
+        /* EXERCISE 10
+         Change the footer text with something else when the user clicks on it.
+        */
+  
+        const changeFooterText = function () {
+          document.getElementsByTagName("h2")[1].addEventListener("click", changeFooterText);{
+            let changeText = document.getElementsByTagName("h2")[1];
+            changeText.innerText = "Hello , i am a footer"
+          }
+        };
+  
+        /* EXERCISE 11
+         Attach an event listener to the input field in the page for console logging its value just after any keystroke.
+        */
+        function handleKeyUp(eventData){
+        const inputField = document.getElementById("input-field").value 
+        console.log(inputField)
+        }
+        /* EXERCISE 12
+         Create a welcome alert message when the page successfully loads.
+        */
+  
+        window.onload = function () {
+          alert("Welcome")
+        };
+  
+        /* EXERCISE 13
+         Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
+        */
+      </script>
+</body>
+</html>
